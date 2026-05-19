@@ -1,30 +1,8 @@
 <script>
 	import { createOrbitLayout } from '$lib/utils/orbit.js';
+    let { data = [] } = $props();
+    let orbit = $derived(createOrbitLayout(data));
 
-	const fakeData = [
-		{
-            certification: "Triple Platine",
-            count: 11
-        },
-        {
-            certification: "Double Platine",
-            count: 8
-        },
-        {
-            certification: "Diamant",
-            count: 5
-        },
-        {
-            certification: "Platine",
-            count: 5
-        },
-        {
-            certification: "Or",
-            count: 107
-        }
-	];
-
-	const orbit = createOrbitLayout(fakeData);
 </script>
 
 <div class="flex items-center justify-center">
@@ -36,7 +14,7 @@
 	<circle
 		cx={orbit.centerX}
 		cy={orbit.centerY}
-		r="36"
+		r="12"
 		fill="#fac775"
 	/>
 
