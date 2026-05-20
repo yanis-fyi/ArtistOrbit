@@ -3,8 +3,15 @@
 	import ArtistSearch from '$lib/components/ArtistSearch.svelte';
 	import CertificationLegend from '$lib/components/CertificationLegend.svelte';
     import {createOrbitLayout} from '$lib/utils/orbit';
+    import {onMount} from 'svelte';
+
+    import EmptyState from '$lib/components/EmptyState.svelte';
 
     import { getArtistCertifications } from '$lib/api/opensnep.js';
+
+    onMount(() => {
+        searchArtist();
+    })
 
     let artist = $state('Stromae');
     /** @type {'Albums' | 'Singles'} */
@@ -18,6 +25,7 @@
 	let loading = $state(false);
     /** @type {string | null} */
 	let error = $state(null);
+
 	async function searchArtist() {
 		try {
 			loading = true;
@@ -58,6 +66,8 @@
 		                <p class="text-white/40">Loading...</p>
 	                {:else if error}
 		                <p class="text-red-400">{error}</p>
+                    {:else if certifications.length === 0}
+                        <EmptyState />
 	                {:else}
 		                <ArtistOrbit data={certifications} />
 	                {/if}

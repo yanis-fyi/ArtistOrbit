@@ -2,47 +2,47 @@ export const CERTIFICATION_TIERS = [
 	{
 		label: 'Or',
 		color: '#EF9F27',
-		radius: 22
+		radius: 24
 	},
 	{
 		label: 'Double Or',
 		color: '#BA7517',
-		radius: 40
+		radius: 44
 	},
 	{
 		label: 'Platine',
 		color: '#B4B2A9',
-		radius: 58
+		radius: 64
 	},
 	{
 		label: 'Double Platine',
 		color: '#888780',
-		radius: 76
+		radius: 84
 	},
 	{
 		label: 'Triple Platine',
 		color: '#5F5E5A',
-		radius: 94
+		radius: 104
 	},
 	{
 		label: 'Diamant',
 		color: '#378ADD',
-		radius: 112
+		radius: 124
 	},
 	{
 		label: 'Double Diamant',
 		color: '#185FA5',
-		radius: 130
+		radius: 144
 	},
 	{
 		label: 'Triple Diamant',
 		color: '#0C447C',
-		radius: 148
+		radius: 164
 	},
 	{
 		label: 'Quadruple Diamant',
 		color: '#042C53',
-		radius: 164
+		radius: 184
 	}
 ];
 
