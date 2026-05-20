@@ -6,7 +6,7 @@ import { PUBLIC_API_URL } from '$env/static/public';
  */
 export async function getArtistCertifications(artist, category) {
 	const response = await fetch(
-		`${PUBLIC_API_URL}/artists/${artist}/certifications?category=${category}`
+		`${PUBLIC_API_URL}/artists/${encodeURIComponent(artist)}/certifications?category=${encodeURIComponent(category)}`
 	);
 
 	if (!response.ok) {
