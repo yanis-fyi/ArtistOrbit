@@ -1,7 +1,14 @@
 <script>
 	import { createOrbitLayout } from '$lib/utils/orbit.js';
-    let { data = [] } = $props();
-    let orbit = $derived(createOrbitLayout(data));
+
+    /** @type {{
+
+	 * data?: { certification: string, count: number }[],
+	 * category?: 'Albums' | 'Singles'
+	 * }}
+	 */
+    let { data = [], category = 'Albums' } = $props();
+    let orbit = $derived(createOrbitLayout(data, category));
 
 </script>
 
