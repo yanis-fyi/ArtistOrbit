@@ -2,7 +2,7 @@
 	import { CERTIFICATION_TIERS } from '$lib/config/certificationTiers.js';
 </script>
 
-<aside class="flex items-center border-l border-white/10 pl-10">
+<aside class="flex items-center border-t border-white/10 pt-8 xl:border-l xl:border-t-0 xl:pl-10 xl:pt-0">
 	<div>
 		<h2 class="mb-8 text-sm font-semibold tracking-[0.3em] text-white/35">
 			CERTIFICATION

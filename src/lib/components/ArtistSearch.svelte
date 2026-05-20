@@ -3,7 +3,7 @@
 </script>
 
 <form
-	class="flex w-110 items-center gap-3 rounded-l border border-white/15 px-6 py-2"
+	class="flex h-14 w-full items-center gap-3 rounded-sm border border-white/15 px-6 sm:max-w-110"
 	onsubmit={(e) => {
 		e.preventDefault();
 		onSearch();

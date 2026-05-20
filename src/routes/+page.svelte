@@ -44,45 +44,88 @@
 	}
 
 </script>
+<main class="min-h-screen bg-[#0a0a0f] p-3 text-white sm:p-5" >
+<section class="flex min-h-[calc(100vh-40px)] flex-col rounded-4xl bg-[#0a0a0f] p-4 sm:p-8 lg:p-10">
+	<div class="grid flex-1 grid-cols-1 gap-8 xl:grid-cols-[1fr_320px] xl:gap-12">
+		
+		<div class="flex min-h-0 flex-col">
 
-<main class="min-h-screen bg-[#0a0a0f] p-5 text-white">
-	<section class="min-h-[calc(100vh-40px)] rounded-4xl bg-[#0a0a0f] p-10">
-		<div class="grid h-full grid-cols-[1fr_320px] gap-12">
-			<div class="flex flex-col">
-				<div class="mb-12 flex items-center gap-4">
-					<div class="relative">
-	                    <select bind:value={category} class="rounded-sm border border-white/15 bg-white/10 px-6 py-2 pr-10 text-white outline-none"
-                        >
-		                    <option>Albums</option>
-		                    <option>Singles</option>
-	                    </select>
-                    </div>
-					<ArtistSearch bind:artist onSearch={searchArtist} />
+			<div class="mb-5 flex flex-col gap-4 sm:mb-12 sm:flex-row sm:items-center">
+				<div class="relative w-full sm:w-auto">
+					<select
+						bind:value={category}
+						class="w-full h-14 rounded-sm border border-white/15 bg-white/10 px-6 pr-10 text-white outline-none sm:w-auto">
+
+						<option>Albums</option>
+						<option>Singles</option>
+					</select>
 				</div>
 
-				<div class="flex flex-1 flex-col items-center justify-center">
-
-	                {#if loading}
-		                <p class="text-white/40">Loading...</p>
-	                {:else if error}
-		                <p class="text-red-400">{error}</p>
-                    {:else if certifications.length === 0}
-                        <EmptyState />
-	                {:else}
-		                <ArtistOrbit data={certifications} />
-	                {/if}
-	                <div class="mt-10 text-center">
-		                <h1 class="text-4xl font-bold">{artist}</h1>
-		                <p class="mt-2 text-xl text-white/40">
-			                {orbit.total > 0 ? orbit.total : 0}
-			                certifications · {category}
-		                </p>
-	                </div>
-
-                </div>
+				<ArtistSearch
+					bind:artist
+					onSearch={searchArtist}
+				/>
 			</div>
 
-			<CertificationLegend />
+			<div class="flex flex-1 flex-col items-center justify-center">
+
+				{#if loading}
+					<p class="text-white/40">Loading...</p>
+
+				{:else if error}
+					<p class="text-red-400">{error}</p>
+
+				{:else if certifications.length === 0}
+					<EmptyState />
+
+				{:else}
+					<ArtistOrbit
+						data={certifications}
+						category={category}
+					/>
+				{/if}
+
+				<div class="mt-5 text-center sm:mt-10">
+					<h1 class="text-3xl font-bold text-white sm:text-4xl">
+						{artist}
+					</h1>
+
+					<p class="mt-2 text-l text-white/40">
+						{orbit.total > 0 ? orbit.total : 0}
+						certifications · {category}
+					</p>
+				</div>
+
+			</div>
 		</div>
-	</section>
+
+		<CertificationLegend />
+
+	</div>
+</section>
+
+<footer class="mt-12 border-t border-white/10 pt-6 text-center text-sm text-white/40">
+	<p>
+		Built by
+		<a
+			href="https://yanis.fyi"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="transition-colors hover:text-white"
+		>
+			Yanis
+		</a>
+
+		·
+
+		<a
+			href="https://github.com/yanis-fyi"
+			target="_blank"
+			rel="noopener noreferrer"
+			class="transition-colors hover:text-white"
+		>
+			GitHub
+		</a>
+	</p>
+</footer>
 </main>

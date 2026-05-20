@@ -19,8 +19,9 @@
 
 </script>
 
-<div class="relative flex items-center justify-center">
+<div class="relative flex w-full max-w-100 items-center justify-center">
 	<svg
+        class="h-auto w-full"
 		width={orbit.width}
 		height={orbit.height}
 		viewBox={`0 0 ${orbit.width} ${orbit.height}`}
