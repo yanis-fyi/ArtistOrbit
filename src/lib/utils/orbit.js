@@ -3,19 +3,28 @@
 import { scaleSqrt, sum } from 'd3';
 import { CERTIFICATION_BY_LABEL } from '$lib/config/certificationTiers.js';
 
-const MAX_CERTIFICATION_COUNT = 120;
-const MIN_STROKE_WIDTH = 0;
-const MAX_STROKE_WIDTH = 34;
+const MIN_STROKE_WIDTH = 2;
+const MAX_STROKE_WIDTH = 18;
 
-const thicknessScale = scaleSqrt()
-	.domain([0, MAX_CERTIFICATION_COUNT])
-	.range([MIN_STROKE_WIDTH, MAX_STROKE_WIDTH])
-	.clamp(true);
+const CATEGORY_MAX_COUNTS = {
+	Albums: 40,
+	Singles: 180
+};
+
 
 /**
  * @param {{ certification: string, count: number }[]} data
- */
-export function createOrbitLayout(data) {
+ * @param {'Albums' | 'Singles'} category
+*/
+export function createOrbitLayout(data, category) {
+    // const maxCount = Math.max(...data.map((d) => d.count), 1);
+    const maxCount = CATEGORY_MAX_COUNTS[category];
+    const thicknessScale = scaleSqrt()
+    .domain([0, maxCount])
+    .range([MIN_STROKE_WIDTH, MAX_STROKE_WIDTH])
+    .clamp(true)
+    
+
 	const rings = data
 		.map(
 			/** @param {{ certification: string, count: number }} item */
@@ -47,11 +56,13 @@ export function createOrbitLayout(data) {
 		);
 
 	return {
-		width: 820,
-		height: 820,
-		centerX: 410,
-		centerY: 410,
-		total: sum(rings, (ring) => ring.count),
-		rings
-	};
+
+	width: 400,
+	height: 400,
+	centerX: 200,
+	centerY: 200,
+	total: sum(rings, (ring) => ring.count),
+	rings
+
+};
 }
