@@ -1,42 +1,76 @@
-# sv
+# ArtistOrbit
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Interactive orbit-based visualization of French music certifications built with SvelteKit and D3.js using the OpenSnep API.
 
-## Creating a project
+## Overview
 
-If you're seeing this, you've probably already done this step. Congrats!
+ArtistOrbit transforms artist certifications into orbital rings:
 
-```sh
-# create a new project
-npx sv create my-app
-```
+- ring color → certification tier
+- ring thickness → number of certifications
+- orbit structure → certification hierarchy
 
-To recreate this project with the same configuration:
+The project was created as a creative showcase of what can be built using the OpenSnep API and French music industry data.
 
-```sh
-# recreate this project
-npx sv@0.15.3 create --template minimal --types jsdoc --add prettier eslint tailwindcss="plugins:none" --install npm .
-```
+## Features
 
-## Developing
+- Interactive SVG orbit visualization
+- Dynamic certification scaling
+- Albums / Singles categories
+- Hover & mobile tooltip interactions
+- Responsive design
+- Real-time API fetching
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Tech Stack
 
-```sh
+- SvelteKit
+- TailwindCSS
+- D3.js
+- OpenSnep API
+
+## Installation
+
+```bash
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+## Environment Variables
 
-To create a production version of your app:
+Create a `.env` file:
 
-```sh
+```env
+PUBLIC_API_URL=http://localhost:8000
+```
+
+## Build
+
+```bash
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+## Links
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+### OpenSnep API
+
+https://opensnep.up.railway.app
+
+### Portfolio
+
+https://yanis.fyi
+
+## Future Improvements
+
+- Improve mobile tooltip positioning
+- Add smooth transitions between artist searches
+- Add search suggestions/autocomplete
+- Persist artist & category in URL parameters
+- Add loading skeletons
+- Improve touch interactions on mobile
+- Add shareable orbit screenshots
+- Add artist search history
+- Improve tooltip overflow handling
+- Add subtle ring glow effects
+- Add deployment URL
+- Add screenshots/GIF demo to README
+- pls: I will do that if I am not lazy :)
