@@ -40,7 +40,7 @@ npm run dev
 Create a `.env` file:
 
 ```env
-PUBLIC_API_URL=http://localhost:8000
+PUBLIC_API_URL=https://opensnep.up.railway.app
 ```
 
 ## Build
