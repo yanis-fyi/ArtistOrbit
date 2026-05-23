@@ -4,6 +4,7 @@
 	import CertificationLegend from '$lib/components/CertificationLegend.svelte';
     import {createOrbitLayout} from '$lib/utils/orbit';
     import {onMount} from 'svelte';
+    import { formatArtistName } from '$lib/utils/format';
 
     import EmptyState from '$lib/components/EmptyState.svelte';
 
@@ -44,13 +45,13 @@
 	}
 
 </script>
-<main class="min-h-screen bg-[#0a0a0f] p-3 text-white sm:p-5" >
-<section class="flex min-h-[calc(100vh-40px)] flex-col rounded-4xl bg-[#0a0a0f] p-4 sm:p-8 lg:p-10">
+<main class="flex min-h-screen flex-col bg-[#0a0a0f] p-3 text-white overflow-y-auto sm:p-5 xl:h-screen xl:overflow-hidden">
+<section class="flex flex-1 flex-col rounded-4xl bg-[#0a0a0f] p-4 sm:p-8 lg:p-10">
 	<div class="grid flex-1 grid-cols-1 gap-8 xl:grid-cols-[1fr_320px] xl:gap-12">
 		
 		<div class="flex min-h-0 flex-col">
 
-			<div class="mb-5 flex flex-col gap-4 sm:mb-12 sm:flex-row sm:items-center">
+			<div class="mb-4 flex flex-col gap-4 sm:mb-6 sm:flex-row sm:items-center">
 				<div class="relative w-full sm:w-auto">
 					<select
 						bind:value={category}
@@ -85,9 +86,9 @@
 					/>
 				{/if}
 
-				<div class="mt-5 text-center sm:mt-10">
+				<div class="mt-4 text-center sm:mt-6">
 					<h1 class="text-3xl font-bold text-white sm:text-4xl">
-						{artist}
+						{formatArtistName(artist)}
 					</h1>
 
 					<p class="mt-2 text-l text-white/40">
@@ -104,7 +105,7 @@
 	</div>
 </section>
 
-<footer class="mt-12 border-t border-white/10 pt-6 text-center text-sm text-white/40">
+<footer class="mt-4 border-t border-white/10 pt-4 text-center text-sm text-white/40">
 	<p>
 		Built by
 		<a

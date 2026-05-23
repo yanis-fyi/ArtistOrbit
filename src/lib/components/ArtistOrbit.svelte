@@ -45,7 +45,6 @@
 	stroke={ring.color}
 	stroke-width={ring.strokeWidth}
 	stroke-linecap="round"
-	opacity={hoveredRing && hoveredRing.label !== ring.label ? 0.25 : 1}
 	onmouseenter={(event) => {
 		hoveredRing = ring;
 		tooltip = { x: event.offsetX + 20, y: event.offsetY - 20 };
@@ -56,7 +55,11 @@
 	onmouseleave={() => {
 		hoveredRing = null;
 	}}
-/>
+    onclick={(event)=> {
+        hoveredRing = hoveredRing?.label === ring.label ? null : ring;
+        tooltip = { x: event.offsetX + 20, y: event.offsetY - 20 };
+    }} 
+    />
 		{/each}
 	</svg>
 

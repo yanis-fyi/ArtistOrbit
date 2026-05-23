@@ -1,4 +1,3 @@
-// src/lib/utils/orbit.js
 
 import { scaleSqrt, sum } from 'd3';
 import { CERTIFICATION_BY_LABEL } from '$lib/config/certificationTiers.js';
@@ -8,8 +7,11 @@ const MAX_STROKE_WIDTH = 18;
 
 const CATEGORY_MAX_COUNTS = {
 	Albums: 40,
-	Singles: 180
+	Singles: 190
 };
+
+const SVG_SIZE = 400;
+const CENTER = SVG_SIZE / 2;
 
 
 /**
@@ -17,7 +19,6 @@ const CATEGORY_MAX_COUNTS = {
  * @param {'Albums' | 'Singles'} category
 */
 export function createOrbitLayout(data, category) {
-    // const maxCount = Math.max(...data.map((d) => d.count), 1);
     const maxCount = CATEGORY_MAX_COUNTS[category];
     const thicknessScale = scaleSqrt()
     .domain([0, maxCount])
@@ -57,10 +58,10 @@ export function createOrbitLayout(data, category) {
 
 	return {
 
-	width: 400,
-	height: 400,
-	centerX: 200,
-	centerY: 200,
+	width: SVG_SIZE,
+	height: SVG_SIZE,
+	centerX: CENTER,
+	centerY: CENTER,
 	total: sum(rings, (ring) => ring.count),
 	rings
 
