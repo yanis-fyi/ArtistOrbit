@@ -2,6 +2,9 @@
 
 Interactive orbit-based visualization of French music certifications built with SvelteKit and D3.js using the OpenSnep API.
 
+## Live Demo
+https://artistorbit.netlify.app/
+
 ## Overview
 
 ArtistOrbit transforms artist certifications into orbital rings:
