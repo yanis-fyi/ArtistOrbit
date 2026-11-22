@@ -5,10 +5,10 @@
 
 {#if ring}
 	<div
-		class="pointer-events-none absolute z-10 rounded-xl border border-white/10 bg-[#0f0f14]/95 px-4 py-2 shadow-2xl backdrop-blur"
+		class="orbit-tooltip pointer-events-none fixed z-50 max-w-[min(240px,calc(100vw-24px))] rounded-xl border border-white/10 bg-[#0f0f14]/95 px-4 py-2 shadow-2xl backdrop-blur"
 		style={`left: ${x}px; top: ${y}px;`}
 	>
-		<div class="flex items-center gap-3 whitespace-nowrap">
+		<div class="flex items-center gap-3 whitespace-normal">
 			<div class="h-3 w-3 rounded-full" style={`background-color: ${ring.color}`}></div>
 
 			<p class="text-sm font-semibold text-white">

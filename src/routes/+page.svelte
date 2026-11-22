@@ -100,14 +100,14 @@
 						</h1>
 						{#if requestState.status === 'success' || requestState.status === 'empty'}
 							<p class="text-l mt-2 text-white/40">
-								{orbit.total} certifications · {category}
+								{orbit.total} certifications - {category}
 							</p>
 						{/if}
 					</div>
 				</div>
 			</div>
 
-			<CertificationLegend />
+			<CertificationLegend {category} />
 		</div>
 	</section>
 
