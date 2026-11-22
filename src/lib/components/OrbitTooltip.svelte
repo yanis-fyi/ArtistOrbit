@@ -1,10 +1,5 @@
 <script>
-	/** @type {{
-	 * ring: { label: string, count: number, color: string } | null,
-	 * x?: number,
-	 * y?: number
-	 * }}
-	 */
+	/** @type {{ ring: { label: string, count: number, color: string } | null, x?: number, y?: number }} */
 	let { ring = null, x = 0, y = 0 } = $props();
 </script>
 
@@ -14,10 +9,7 @@
 		style={`left: ${x}px; top: ${y}px;`}
 	>
 		<div class="flex items-center gap-3 whitespace-nowrap">
-			<div
-				class="h-3 w-3 rounded-full"
-				style={`background-color: ${ring.color}`}
-			></div>
+			<div class="h-3 w-3 rounded-full" style={`background-color: ${ring.color}`}></div>
 
 			<p class="text-sm font-semibold text-white">
 				{ring.label}
