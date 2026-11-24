@@ -14,6 +14,18 @@ const CATEGORY_MAX_COUNTS = {
 const SVG_SIZE = 400;
 const CENTER = SVG_SIZE / 2;
 
+/** @param {string} label */
+function normalizeCertificationLabel(label) {
+	return label.trim().replace(/\s+/g, ' ').toLocaleLowerCase();
+}
+
+const CERTIFICATION_BY_NORMALIZED_LABEL = new Map(
+	Object.values(CERTIFICATION_BY_LABEL).map((tier) => [
+		normalizeCertificationLabel(tier.label),
+		tier
+	])
+);
+
 /**
  * @param {{ certification: string, count: number }[]} data
  * @param {'Albums' | 'Singles'} category
@@ -27,10 +39,13 @@ export function createOrbitLayout(data, category) {
 
 	/** @type {OrbitRing[]} */
 	const rings = data
+		.filter((item) => item.count > 0)
 		.map(
 			/** @param {{ certification: string, count: number }} item */
 			(item) => {
-				const tier = CERTIFICATION_BY_LABEL[item.certification];
+				const tier = CERTIFICATION_BY_NORMALIZED_LABEL.get(
+					normalizeCertificationLabel(item.certification)
+				);
 
 				if (!tier) return null;
 

@@ -26,6 +26,61 @@ test('createOrbitLayout totals recognized certification counts', () => {
 	);
 });
 
+test('createOrbitLayout renders Double Or alongside Or and Platine', () => {
+	const layout = createOrbitLayout(
+		[
+			{ certification: 'Or', count: 2 },
+			{ certification: 'Double Or', count: 1 },
+			{ certification: 'Platine', count: 3 }
+		],
+		'Albums'
+	);
+
+	assert.deepEqual(
+		layout.rings.map(({ label, radius, color }) => ({ label, radius, color })),
+		[
+			{ label: 'Or', radius: 24, color: '#EF9F27' },
+			{ label: 'Double Or', radius: 44, color: '#BA7517' },
+			{ label: 'Platine', radius: 64, color: '#B4B2A9' }
+		]
+	);
+	assert.equal(
+		layout.rings.every(({ strokeWidth }) => strokeWidth > 0),
+		true
+	);
+});
+
+test('createOrbitLayout normalizes certification label whitespace and casing', () => {
+	const layout = createOrbitLayout(
+		[
+			{ certification: '  dOuBlE   oR ', count: 1 },
+			{ certification: '  OR ', count: 1 }
+		],
+		'Albums'
+	);
+
+	assert.deepEqual(
+		layout.rings.map(({ label }) => label),
+		['Double Or', 'Or']
+	);
+});
+
+test('createOrbitLayout hides zero-count certifications', () => {
+	const layout = createOrbitLayout(
+		[
+			{ certification: 'Double Or', count: 0 },
+			{ certification: 'Or', count: 1 }
+		],
+		'Albums'
+	);
+
+	assert.deepEqual(
+		layout.rings.map(({ label }) => label),
+		['Or']
+	);
+	assert.equal(layout.total, 1);
+});
+
 test('failed requests enter error state without certification totals', async () => {
 	/** @type {import('../src/lib/utils/requestState.js').RequestState} */
 	let state = { status: 'initial', certifications: [], error: null };
